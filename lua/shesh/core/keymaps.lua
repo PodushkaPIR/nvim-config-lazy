@@ -18,7 +18,6 @@ vim.keymap.set("n", "N", "Nzzzv")
 
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
-
 -- Plugins keymaps
 
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
