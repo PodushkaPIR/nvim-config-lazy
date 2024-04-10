@@ -1,14 +1,18 @@
 return {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
-    dependencies = {
-        "hrsh7th/cmp-buffer", -- source for text in buffer
-        "hrsh7th/cmp-path", -- source for file system paths
-        "L3MON4D3/LuaSnip", -- snippet engine
-        "saadparwaiz1/cmp_luasnip", -- for autocompletion
-        "rafamadriz/friendly-snippets", -- useful snippets
-        "onsails/lspkind.nvim", -- vs-code like pictograms
-        -- "SirVer/ultisnips",
+    {
+        "L3MON4D3/LuaSnip",
+        dependencies = {
+            -- "hrsh7th/cmp-buffer", -- source for text in buffer
+            -- "hrsh7th/cmp-path", -- source for file system paths
+            "saadparwaiz1/cmp_luasnip", -- for autocompletion
+            "rafamadriz/friendly-snippets", -- useful snippets
+            "onsails/lspkind.nvim", -- vs-code like pictograms
+        },
+    },
+    {
+        "SirVer/ultisnips",
     },
     config = function()
         local cmp = require("cmp")
@@ -16,8 +20,6 @@ return {
         local luasnip = require("luasnip")
 
         local lspkind = require("lspkind")
-
-        -- local ultisnip = require("cmp_nvim_ultisnips")
 
         -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
         require("luasnip.loaders.from_vscode").lazy_load()
@@ -28,7 +30,6 @@ return {
             },
             snippet = { -- configure how nvim-cmp interacts with snippet engine
                 expand = function(args)
-                    luasnip.lsp_expand(args.body)
                     -- ultisnip.lsp_expand(args.body)
                 end,
             },
@@ -47,7 +48,7 @@ return {
                 { name = "luasnip" }, -- snippets
                 { name = "buffer" }, -- text within current buffer
                 { name = "path" }, -- file system paths
-                -- { name = "ultisnips" }, -- ultisnips
+                { name = "ultisnips" }, -- ultisnips
             }),
             -- configure lspkind for vs-code like pictograms in completion menu
             formatting = {
