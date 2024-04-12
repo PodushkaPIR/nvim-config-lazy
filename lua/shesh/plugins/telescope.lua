@@ -2,6 +2,7 @@ return {
     "nvim-telescope/telescope.nvim",
     branch = "0.1.x",
     dependencies = {
+        -- "nvim-telescope/telescope-live-grep-args.nvim" ,
         "nvim-lua/plenary.nvim",
         { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
         "nvim-tree/nvim-web-devicons",
@@ -9,6 +10,7 @@ return {
     config = function()
         local telescope = require("telescope")
         local actions = require("telescope.actions")
+        -- local live_grep = require("telescope")
 
         telescope.setup({
             defaults = {
@@ -24,6 +26,7 @@ return {
         })
 
         telescope.load_extension("fzf")
+        -- live_grep.load_extension("live_grep_args")
 
         -- set keymaps
         local keymap = vim.keymap -- for conciseness
